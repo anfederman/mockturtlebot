@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<robot name="turtlebot4" xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- Base create3 model -->
+  <xacro:include filename="$(find irobot_create_description)/urdf/create3.urdf.xacro" />
+  <xacro:include filename="$(find turtlebot4_description)/urdf/sensors/asus_camera.urdf.xacro" />
+  <!-- Mechanical properties -->
+
+  <!-- Turtlebot4 sensor definitions -->
+
+  <xacro:asus_camera  parent_link="base_link">
+    <origin xyz="0.15 0.0 0.25"/>
+  </xacro:asus_camera>
+
+</robot>

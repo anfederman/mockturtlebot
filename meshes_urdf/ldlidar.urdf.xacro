@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:macro name="ldlidar" params="name parent_link gazebo *origin">
+  <xacro:include filename="$(find irobot_create_description)/urdf/common_properties.urdf.xac
+ro"/>
+
+
+  <xacro:property name="ldlidar_box_size_x" value="0.038" />
+  <xacro:property name="ldlidar_box_size_y" value="0.038" />
+  <xacro:property name="ldlidar_box_size_z" value="0.023" />
+  <xacro:property name="lidar_radius" value="0.032" />
+  <!-- offset relative to box - how much it sticks out on top -->
+  <xacro:property name="ldlidar_offset_z" value="0.013" />
+  
+  <joint name="${name}_joint" type="fixed">
+    <parent link="${parent_link}"/>
+    <child link="${name}_link"/>
+    <xacro:insert_block name="origin"/>
+  </joint>
+
+    <link name="${name}_link">
+	 <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+	<geometry>
+	    <mesh filename="package://turtlebot4_description/meshes/ld19.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="ldlidar_mat">
+            <color rgba="0.8 0.8 0.8 0.8"/>
+      </material>
+     </visual>
+    
+  </xacro:macro>
+
+</robot>
