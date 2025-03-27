@@ -1,5 +1,4 @@
-these are the modified turtlebot4 files for Alan Federmens gopher2,
-
+These are the modified turtlebot4 files for Alan Federmens Gopher2,
 as expalined in the mockBot documents:
 
 It consists of these modified files.
