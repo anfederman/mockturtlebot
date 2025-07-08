@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<robot name="neato" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <link name="base_link">
+       <visual>
+          <origin xyz="0.150 -0.165 -0.040" rpy="0 0 1.57" />
+          <geometry>
+            <mesh filename="package://urdf_tutorial/meshes/neato.dae" scale="0.025 0.025 0.025"/> 
+          </geometry>
+       </visual>
+     </link>
+
+    <link name="base_footprint"/>
+       <visual>
+          <origin xyz="0 0 0.040" rpy="0 0 0"/>
+       </visual>
+       <joint name="base_joint" type="fixed">
+          <origin xyz="0 0 0.040" rpy="0 0 0" />
+          <parent link="base_footprint" />
+          <child link="base_link" />
+       </joint>
+
+    <link name="base_laser_link"/>
+       <visual>
+          <origin xyz="-0.090 0 0.037" rpy="0 0 0"/>
+       </visual>
+
+       <joint name="laser_joint" type="fixed">
+         <origin xyz="-0.090 0.0 0.037" rpy="0 0 0" />
+         <parent link="base_link" />
+         <child link="base_laser_link" />
+       </joint>
+
+
+
+
+     <link name="raspi_camera">
+       <visual>
+         <geometry>
+           <mesh filename="package://urdf_tutorial/meshes/raspi_camera.dae" />
+         </geometry>
+         <origin xyz="0.0 0.0 0.0" rpy="0 0 ${-pi/2}" />
+       </visual>
+     </link>
+
+       <joint name="raspi_camera_joint" type="fixed">
+         <origin xyz="0.11 0 0.215" rpy="0 0 0" />
+
+         <parent link="base_link" />
+         <child link="raspi_camera" />
+       </joint>
+
+     <link name="right_front_support">
+       <visual>
+       <geometry>
+          <cylinder length="0.5" radius="0.009"/>
+       </geometry>
+         <material name="lgrey">
+           <color rgba="0.5 0.5 0.5 1.0"/>
+         </material>
+
+        <origin rpy="0 0 0" xyz="0.06 -0.14 0.12"/>
+        </visual>
+     </link>
+
+     <joint name="base_to_right_front_support_link" type="fixed">
+         <parent link="base_link"/>
+         <child link="right_front_support"/>
+         <origin rpy="0 0 0" xyz="0 0 0.12"/>
+     </joint>
+
+     <link name="right_rear_support">
+       <visual>
+        <geometry>
+          <cylinder length="0.5" radius="0.009"/>
+        </geometry>
+        <material name="lgrey">
+          <color rgba="0.5 0.5 0.5 1.0"/>
+        </material>
+
+        <origin rpy="0 0 0" xyz="-0.05 -0.14 0.12"/>
+      </visual>
+    </link>
+
+    <joint name="base_to_right_rear_support_link" type="fixed">
+      <parent link="base_link"/>
+      <child link="right_rear_support"/>
+      <origin rpy="0 0 0" xyz="0 0 0.12"/>
+    </joint>
+
+
+  <link name="left_front_support">
+    <visual>
+      <geometry>
+        <cylinder length="0.5" radius="0.009"/>
+      </geometry>
+      <material name="lgrey">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+
+      <origin rpy="0 0 0" xyz="0.06 0.14 0.12"/>
+    </visual>
+  </link>
+  <joint name="base_to_left_front_support_link" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_front_support"/>
+    <origin rpy="0 0 0" xyz="0 0 0.12"/>
+  </joint>
+
+
+  <link name="left_rear_support">
+    <visual>
+      <geometry>
+        <cylinder length="0.5" radius="0.009"/>
+      </geometry>
+      <material name="lgrey">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+
+      <origin rpy="0 0 0" xyz="-0.05 0.14 0.12"/>
+    </visual>
+  </link>
+  <joint name="base_to_left_rear_support_link" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_rear_support"/>
+    <origin rpy="0 0 0" xyz="0 0 0.12"/>
+  </joint>
+
+
+  <link name="table">
+    <visual>
+      <geometry>
+      <mesh filename="package://urdf_tutorial/meshes/table.dae" scale="3.6 3.6 3.6"/>
+      </geometry>
+      <material name="lgrey">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+      <origin rpy="0 0 1.5707" xyz="0.145 -0.17 0.18"/>
+    </visual>
+
+  </link>
+  <joint name="base_to_table" type="fixed">
+    <parent link="base_link"/>
+    <child link="table"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+
+
+  <link name="tableU">
+    <visual>
+      <geometry>
+      <mesh filename="package://urdf_tutorial/meshes/table.dae" scale="3.6 3.6 3.6"/>
+      </geometry>
+      <material name="lgrey">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+      <origin rpy="0 0 1.5707" xyz="0.145 -0.17 0.5"/>
+    </visual>
+
+  </link>
+  <joint name="base_to_tableU" type="fixed">
+    <parent link="base_link"/>
+    <child link="tableU"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  
+</robot>
+
